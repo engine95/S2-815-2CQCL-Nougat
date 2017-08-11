@@ -931,7 +931,7 @@ static int cpufreq_interactive_notifier(
 	int cpu;
 	unsigned long flags;
 
-	if (val == CPUFREQ_POSTCHANGE) {
+	if (val == CPUFREQ_PRECHANGE) {
 		pcpu = &per_cpu(cpuinfo, freq->cpu);
 		if (!down_read_trylock(&pcpu->enable_sem))
 			return 0;
@@ -1637,7 +1637,8 @@ static ssize_t show_cpu_util(struct cpufreq_interactive_tunables
 			ret += sprintf(buf + ret, "OFF ");
 	}
 
-	ret += sprintf(buf + --ret, "\n");
+	--ret;
+	ret += sprintf(buf + ret, "\n");
 	return ret;
 }
 #endif

@@ -101,8 +101,8 @@ static struct apll_freq exynos5433_apll_freq_CA15[] = {
 	 * PLL M, P, S
 	 */
 	APLL_FREQ(2500, 0, 0, 4, 7, 7, 7, 7, 0, 1, 7, 0, 625, 6, 0),    /* ARM L0: 2.5GHz  */
-	APLL_FREQ(2400, 0, 0, 4, 7, 7, 7, 7, 0, 1, 7, 0, 500, 5, 0),    /* ARM L1: 2.4GMHz */
-	APLL_FREQ(2300, 0, 0, 4, 7, 7, 7, 7, 0, 1, 7, 0, 575, 6, 0),    /* ARM L2: 2.3GMHz */
+	APLL_FREQ(2400, 0, 0, 4, 7, 7, 7, 7, 0, 1, 7, 0, 500, 5, 0),    /* ARM L1: 2.4GHz */
+	APLL_FREQ(2300, 0, 0, 4, 7, 7, 7, 7, 0, 1, 7, 0, 575, 6, 0),    /* ARM L2: 2.3GHz */
 	APLL_FREQ(2200, 0, 0, 4, 7, 7, 7, 7, 0, 1, 7, 0, 550, 6, 0),    /* ARM L3: 2.2GHz  */
 	APLL_FREQ(2100, 0, 0, 4, 7, 7, 7, 7, 0, 1, 7, 0, 350, 4, 0),    /* ARM L4: 2.1GHz  */
 	APLL_FREQ(2000, 0, 0, 4, 7, 7, 7, 7, 0, 1, 7, 0, 500, 6, 0),    /* ARM L5: 2.0GHz  */
@@ -405,9 +405,9 @@ static void __init set_volt_table_CA15(void)
 		break;
 	default :
 #if defined(CONFIG_SOC_EXYNOS5433_L)
-		max_support_idx_CA15 = L7;	/* 1.8 GHz */
+		max_support_idx_CA15 = L5;	/* 2.0 GHz */
 #else
-		max_support_idx_CA15 = L6;	/* 1.9 GHz */
+		max_support_idx_CA15 = L5;	/* 2.0 GHz */
 #endif
 	}
 
@@ -417,7 +417,7 @@ static void __init set_volt_table_CA15(void)
 	max_support_idx_CA15 = L13;	/* 1.2 GHz */
 #endif
 
-	min_support_idx_CA15 = L18;	/* 700 MHz */
+	min_support_idx_CA15 = L20;	/* 500 MHz */
 
 	pr_info("CPUFREQ of CA15 max_freq : L%d %u khz\n", max_support_idx_CA15,
 		exynos5433_freq_table_CA15[max_support_idx_CA15].frequency);
